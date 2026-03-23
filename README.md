@@ -1,3 +1,5 @@
+[![Python Quality Check](https://github.com/kolivanne/atlas-ops-demo/actions/workflows/ci-test.yml/badge.svg)](https://github.com/kolivanne/atlas-ops-demo/actions/workflows/ci-test.yml)
+[![Project Governance Automation](https://github.com/kolivanne/atlas-ops-demo/actions/workflows/jira-simulation.yml/badge.svg)](https://github.com/kolivanne/atlas-ops-demo/actions/workflows/jira-simulation.yml)
 # Atlassian Governance Demo
 
 This project demonstrates how I would standardize, clean up, and scale an Atlassian ecosystem in a fast-growing company. The goal is to simplify workflows, make information easy to find, and create a structured, maintainable environment for all teams.
