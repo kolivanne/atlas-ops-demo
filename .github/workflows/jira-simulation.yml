@@ -8,7 +8,7 @@ permissions:
   issues: write
 
 jobs:
-  triage-and-security:
+  governance:
     runs-on: ubuntu-latest
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -22,15 +22,15 @@ jobs:
       - name: Acknowledge New Issue
         if: github.event.action == 'opened'
         run: |
-          gh issue comment ${{ github.event.issue.number }} --body "Internal Process Note: This request has been logged. Our tooling team will review the requirements for stack compatibility."
+          gh issue comment ${{ github.event.issue.number }} \
+            --body "Thanks for opening this issue! Our team will review it and follow up if needed."
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: AI Compliance Check
-        if: >
-          (github.event.action == 'labeled' && github.event.label.name == 'ai-request') ||
-          (github.event.action == 'opened' && contains(github.event.issue.labels.*.name, 'ai-request'))
+        if: github.event.action == 'labeled' && github.event.label.name == 'ai-request'
         run: |
-          gh issue comment ${{ github.event.issue.number }} --body "Compliance Trigger: This request involves AI tooling. Please confirm that the data handling steps align with our internal AI Policy."
+          gh issue comment ${{ github.event.issue.number }} \
+            --body "Compliance Trigger: This request involves AI tooling. Please confirm that the data handling steps align with our internal AI Policy."
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
